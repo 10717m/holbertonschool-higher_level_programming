@@ -2,5 +2,6 @@
 def uppercase(str):
     """Print a string in uppercase."""
     for char in str:
-        print("{:c}".format(ord(char) - 32 if 'a' <= char <= 'z' else ord(char)), end="")
+        diff = 32 if 'a' <= char <= 'z' else 0
+        print("{:c}".format(ord(char) - diff), end="")
     print()
