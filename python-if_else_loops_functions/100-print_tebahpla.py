@@ -1,6 +1,2 @@
 #!/usr/bin/python3
-for i in range(25, -1, -1):
-    c = i + ord('A')
-    if i % 2 == 1:
-        c += 32
-        print("{:c}".format(C), end="")
+print("".join(["{}".format(chr(122 - i) if i % 2 == 0 else "{}".format(chr(89 - (i - 1))) for i in range(26)]), end="")
