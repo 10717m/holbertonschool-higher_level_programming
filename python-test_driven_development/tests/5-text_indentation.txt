@@ -1,45 +1,135 @@
-Test cases for text_indentation function
+The ``5-text_indentation`` module
+============================
 
->>> text_indentation = __import__('5-text_indentation').text_indentation
+Using ``text_indentation``
+---------------------
 
->>> text_indentation("Hello. How are you? Good: then proceed.")
-Hello.
-How are you?
-Good:
-then proceed.
+Import module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
 
->>> text_indentation("First sentence. Second sentence? Third sentence: The end.")
-First sentence.
-Second sentence?
-Third sentence:
-The end.
+Test no delim:
+    >>> text_indentation("Hello Holberton")
+    Hello Holberton
 
->>> text_indentation("No punctuation here")
-No punctuation here
+Test string with spaces:
+    >>> text_indentation("Holberton          ")
+    Holberton
 
->>> text_indentation("Single. Word. Test.")
-Single.
-Word.
-Test.
+Test string with spaces 2:
+    >>> text_indentation("        Holberton")
+    Holberton
+    
+Test string with spaces 3:
+    >>> text_indentation("        Holberton          ")
+    Holberton
+    
+Test string with empty string:
+    >>> text_indentation("")
 
->>> try:
-...     text_indentation(123)
-... except Exception as e:
-...     print(e)
-text must be a string
+Test string with empty string 2:
+    >>> text_indentation("      ")
 
->>> text_indentation("Extra   spaces.   Should be  trimmed.")
-Extra   spaces.
-Should be  trimmed.
+Test simple:
+    >>> text_indentation("Hello: Holberton")
+    Hello:
+    <BLANKLINE>
+    Holberton
 
->>> text_indentation("")
-(no output expected)
+Test delims with spaces:
+    >>> text_indentation("      ?:  :  ")
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
 
->>> text_indentation("Multiple... Punctuation?? Works::")
-Multiple.
-.
-.
-Punctuation?
-?
-Works:
-:
+Test newline:
+    >>> text_indentation("\n")
+    <BLANKLINE>
+
+Test newline 2:
+    >>> text_indentation("\n\n")
+    <BLANKLINE>
+    <BLANKLINE>
+
+Test newline 3:
+    >>> text_indentation("Hello\n\n")
+    Hello
+    <BLANKLINE>
+
+Test all delimeters:
+    >>> text_indentation("Hello: Holberton? school. fooo")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test all delimeters with spaces:
+    >>> text_indentation("Hello   :     Holberton    ?    school.    fooo")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test all delimeters with spaces at end:
+    >>> text_indentation("Hello   :     Holberton    ?    school.    fooo     ")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test just delimeters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test just delimeters 2:
+    >>> text_indentation("     ?   ")
+    ?
+    <BLANKLINE>
+
+Test nonindent inside indent
+    >>> text_indentation("?Hello.")
+    ?
+    <BLANKLINE>
+    Hello.
+    <BLANKLINE>
+
+Test existing newlines:
+    >>> text_indentation("?\n\n.\n\n:")
+    ?
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test none:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Test number:
+    >>> text_indentation(33)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
