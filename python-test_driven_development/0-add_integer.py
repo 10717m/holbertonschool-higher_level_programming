@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This module provides a function to add two integers.
-The function handles type checking and converts floats to integers before addition.
+The function handles type checking converts floats integers before addition.
 """
 
 
