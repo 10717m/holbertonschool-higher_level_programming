@@ -1,0 +1,45 @@
+Test cases for text_indentation function
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. How are you? Good: then proceed.")
+Hello.
+How are you?
+Good:
+then proceed.
+
+>>> text_indentation("First sentence. Second sentence? Third sentence: The end.")
+First sentence.
+Second sentence?
+Third sentence:
+The end.
+
+>>> text_indentation("No punctuation here")
+No punctuation here
+
+>>> text_indentation("Single. Word. Test.")
+Single.
+Word.
+Test.
+
+>>> try:
+...     text_indentation(123)
+... except Exception as e:
+...     print(e)
+text must be a string
+
+>>> text_indentation("Extra   spaces.   Should be  trimmed.")
+Extra   spaces.
+Should be  trimmed.
+
+>>> text_indentation("")
+(no output expected)
+
+>>> text_indentation("Multiple... Punctuation?? Works::")
+Multiple.
+.
+.
+Punctuation?
+?
+Works:
+:
