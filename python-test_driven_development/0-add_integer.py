@@ -3,8 +3,6 @@
 This module provides a function to add two integers.
 The function handles type checking converts floats integers before addition.
 """
-
-
 def add_integer(a, b=98):
     """
     Adds two integers after type checking and conversion from float if needed.
