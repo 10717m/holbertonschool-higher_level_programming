@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""
-This module provides a function to add two integers.
-The function handles type checking and converts floats to integers before addition.
-"""
+"""This module provides a function to add two integers."""
 
 
 def add_integer(a, b=98):
-    """
-    Adds two integers after type checking and conversion from float if needed.
-
+    """Add two integers after type checking and conversion.
+    
     Args:
         a: First number (integer or float)
         b: Second number (integer or float, defaults to 98)
