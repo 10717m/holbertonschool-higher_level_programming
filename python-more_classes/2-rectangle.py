@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Module 2-rectangle
-Defines a Rectangle class with width and height, including area and perimeter methods.
+Defines Rectangle class with width height including area and perimeter methods.
 """
 
 
@@ -51,4 +51,3 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return 0
         return 2 * (self.width + self.height)
-
