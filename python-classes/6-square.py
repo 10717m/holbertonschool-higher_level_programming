@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Module 6-square
-Defines a Square class with size, position, area calculation, and visual printing.
+Defines a Square class with size, position, area calculation, visual printing.
 """
 
 
@@ -72,4 +72,3 @@ class Square:
         # Print the square lines with horizontal offset
         for _ in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
-
