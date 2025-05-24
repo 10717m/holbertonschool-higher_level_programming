@@ -55,10 +55,9 @@ class Rectangle:
         return "\n".join(["#" * self.width for _ in range(self.height)])
 
     def __repr__(self):
-        """Return string representation to recreate new instance with eval()."""
+        """Return string representation recreate new instance with eval()."""
         return f"Rectangle({self.width}, {self.height})"
 
     def __del__(self):
         """Print a message when the instance is deleted."""
         print("Bye rectangle...")
-

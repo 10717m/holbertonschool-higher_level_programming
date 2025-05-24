@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a class Rectangle with string representation and geometry methods."""
+"""Defines class Rectangle string representation and geometry methods."""
 
 
 class Rectangle:
@@ -57,4 +57,3 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return ""
         return '\n'.join(["#" * self.width for _ in range(self.height)])
-

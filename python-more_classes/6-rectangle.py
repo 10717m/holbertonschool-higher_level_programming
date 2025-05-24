@@ -66,4 +66,3 @@ class Rectangle:
         """Destructor that prints a message and decrements counter."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
-
