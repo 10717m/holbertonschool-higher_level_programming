@@ -1,17 +1,20 @@
 #!/usr/bin/python3
-"""Module 4-rectangle
-Defines a Rectangle class with width, height, area, perimeter,
-string representation, and ability to recreate instances via eval().
+"""Module 7-rectangle
+Defines Rectangle class with instance counting and customizable print symbol.
 """
 
 
 class Rectangle:
-    """Rectangle class defines a rectangle by width and height."""
+    """Rectangle class with width, height, and print_symbol."""
+
+    number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Initialize rectangle with optional width and height."""
         self.width = width
         self.height = height
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -42,22 +45,32 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Return the current rectangle area."""
+        """Return the rectangle area."""
         return self.width * self.height
 
     def perimeter(self):
-        """Return the perimeter of the rectangle."""
+        """Return the rectangle perimeter or 0 if width or height is 0."""
         if self.width == 0 or self.height == 0:
             return 0
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Return the rectangle as a string using '#' characters."""
+        """Return the rectangle as a string using print_symbol."""
         if self.width == 0 or self.height == 0:
             return ""
-        rows = ['#' * self.width for _ in range(self.height)]
-        return "\n".join(rows)
+
+        # Convert print_symbol to string if needed
+        symbol = str(self.print_symbol)
+
+        # Build each line using the symbol, width times, then repeat for height lines
+        lines = [symbol * self.width for _ in range(self.height)]
+        return "\n".join(lines)
 
     def __repr__(self):
-        """Return a string representation to recreate a new instance."""
+        """Return string to recreate instance via eval()."""
         return f"Rectangle({self.width}, {self.height})"
+
+    def __del__(self):
+        """Print a message when an instance is deleted and decrement count."""
+        print("Bye rectangle...")
+        type(self).number_of_instances -= 1
