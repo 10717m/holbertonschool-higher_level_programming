@@ -52,7 +52,7 @@ class Square:
         return NotImplemented
 
     def __le__(self, other):
-        """Check if this square is less than or equal to another based on area."""
+        """Check if this square less than or equal another based on area."""
         if isinstance(other, Square):
             return self.area() <= other.area()
         return NotImplemented
@@ -64,8 +64,7 @@ class Square:
         return NotImplemented
 
     def __ge__(self, other):
-        """Check if this square is greater than or equal to another based on area."""
+        """Check if this square is greater than or equal another based area."""
         if isinstance(other, Square):
             return self.area() >= other.area()
         return NotImplemented
-

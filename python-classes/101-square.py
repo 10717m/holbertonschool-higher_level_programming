@@ -68,4 +68,3 @@ class Square:
         for _ in range(self.__size):
             result.append(" " * self.__position[0] + "#" * self.__size + "\n")
         return "".join(result).rstrip()
-
