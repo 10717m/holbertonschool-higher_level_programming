@@ -11,8 +11,7 @@ class MyList(list):
     """
 
     def print_sorted(self):
-        """Prints the list in ascending sorted order without modifying the original list."""
+        """Prints list ascending sorted order without modifying original ."""
         if not all(isinstance(x, int) for x in self):
             raise TypeError("all elements must be integers")
         print(sorted(self))
-
