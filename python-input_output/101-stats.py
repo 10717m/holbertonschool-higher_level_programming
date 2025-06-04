@@ -32,19 +32,21 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             parts = line.strip().split()
-            if len(parts) >= 7:
+            if len(parts) >= 2:
                 try:
                     status_code = int(parts[-2])
                     file_size = int(parts[-1])
                     total_size += file_size
                     if status_code in status_counts:
                         status_counts[status_code] += 1
-                except Exception:
+                except (ValueError, IndexError):
+                    # Skip lines with incorrect format
                     pass
             line_count += 1
             if line_count % 10 == 0:
                 print_stats(total_size, status_counts)
     except KeyboardInterrupt:
-        pass
+        print_stats(total_size, status_counts)
+        raise
     finally:
         print_stats(total_size, status_counts)
