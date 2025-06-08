@@ -21,7 +21,8 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b'{"status": "OK"}')
+            status = {"status": "OK"}
+            self.wfile.write(json.dumps(status).encode())  # ✅ التعديل هنا
 
         elif self.path == '/info':
             self.send_response(200)
@@ -35,7 +36,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "application/json")
             self.end_headers()
             error = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error).encode())
+            self.wfile.write(json.dumps(error).encode())  # ✅ التعديل هنا
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
     server_address = ('', port)
@@ -45,4 +46,3 @@ def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
 
 if __name__ == "__main__":
     run()
-
