@@ -37,8 +37,8 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(HTTPStatus.NOT_FOUND)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            error_msg = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error_msg).encode('utf-8'))
+            error_response = {"error": "Endpoint not found"}
+            self.wfile.write(json.dumps(error_response).encode('utf-8'))
 
     def do_POST(self):
         if self.path == '/echo':
