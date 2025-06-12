@@ -3,32 +3,32 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        # Set response headers
-        self.send_response(200)
-        self.send_header('Content-type', 'text/plain')
+        # Initialize response variables
+        response = ""
+        content_type = "text/plain"
+        status_code = 200
         
         # Handle different endpoints
         if self.path == '/':
             response = "Hello, this is a simple API!"
-            self.send_header('Content-type', 'text/plain')
         elif self.path == '/data':
             response = json.dumps({"name": "John", "age": 30, "city": "New York"})
-            self.send_header('Content-type', 'application/json')
+            content_type = "application/json"
         elif self.path == '/status':
             response = "OK"
-            self.send_header('Content-type', 'text/plain')
         elif self.path == '/info':
             response = json.dumps({
                 "version": "1.0",
                 "description": "A simple API built with http.server"
             })
-            self.send_header('Content-type', 'application/json')
+            content_type = "application/json"
         else:
-            self.send_response(404)
             response = "Endpoint not found"
-            self.send_header('Content-type', 'text/plain')
+            status_code = 404
         
-        # End headers and send response
+        # Send response
+        self.send_response(status_code)
+        self.send_header('Content-type', content_type)
         self.end_headers()
         self.wfile.write(response.encode('utf-8'))
 
