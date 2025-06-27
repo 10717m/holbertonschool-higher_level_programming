@@ -1,0 +1,16 @@
+-- Select the names of all genres
+SELECT name
+FROM tv_genres
+-- Exclude genres linked to the show "Dexter"
+WHERE id NOT IN (
+    -- Select genre_ids linked to "Dexter"
+    SELECT genre_id
+    FROM tv_show_genres
+    WHERE show_id = (
+        -- Get the id of the show "Dexter"
+        SELECT id FROM tv_shows WHERE title = 'Dexter'
+    )
+)
+-- Order the results by genre name in ascending order
+ORDER BY name ASC;
+
