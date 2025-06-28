@@ -12,8 +12,7 @@ from model_city import City
 if __name__ == "__main__":
     # Check for correct number of arguments
     if len(sys.argv) != 4:
-        print("Usage: {} username password database".format(
-            sys.argv[0]))
+        print("Usage: {} username password database".format(sys.argv[0]))
         sys.exit(1)
 
     # Get connection parameters
@@ -34,9 +33,9 @@ if __name__ == "__main__":
 
     # Query all cities with their states, ordered by city id
     cities = session.query(City, State)\
-                   .filter(City.state_id == State.id)\
-                   .order_by(City.id)\
-                   .all()
+        .filter(City.state_id == State.id)\
+        .order_by(City.id)\
+        .all()
 
     # Display results in required format
     for city, state in cities:
