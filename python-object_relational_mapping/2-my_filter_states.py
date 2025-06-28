@@ -9,7 +9,10 @@ import sys
 
 if __name__ == "__main__":
     # Read arguments
-    username, password, db_name, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+    state_name = sys.argv[4]
 
     # Connect to the database
     db = MySQLdb.connect(
@@ -22,7 +25,11 @@ if __name__ == "__main__":
 
     # Create cursor and execute query using string formatting
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC".format(state_name)
+    query = (
+        "SELECT * FROM states "
+        "WHERE name LIKE BINARY '{}' "
+        "ORDER BY id ASC".format(state_name)
+    )
     cursor.execute(query)
 
     # Print all matching rows
