@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Lists all states with a name starting with 'N'
-from the database hbtn_0e_0_usa, sorted by states.id.
+Lists all states from the database hbtn_0e_0_usa
+where name starts with 'N', sorted by id in ascending order.
 """
 
 import MySQLdb
@@ -9,7 +9,7 @@ import sys
 
 if __name__ == "__main__":
     # Get MySQL credentials and database name from command-line arguments
-    username, password, db_name = sys.argv[1:4]
+    username, password, db_name = sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Connect to the MySQL database
     db = MySQLdb.connect(
@@ -23,15 +23,13 @@ if __name__ == "__main__":
     # Create a cursor object to execute SQL queries
     cursor = db.cursor()
 
-    # SQL query to filter states starting with 'N'
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
-    cursor.execute(query)
+    # Execute SQL query to select states starting with 'N'
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
 
     # Fetch and print all results
-    rows = cursor.fetchall()
-    for row in rows:
+    for row in cursor.fetchall():
         print(row)
 
-    # Clean up
+    # Close cursor and database connection
     cursor.close()
     db.close()
