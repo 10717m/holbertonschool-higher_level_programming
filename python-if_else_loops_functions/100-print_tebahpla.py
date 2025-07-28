@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-print("".join(["{}".format(chr(122 - i) if i % 2 == 0 else "{}".format(chr(89 - (i - 1))) for i in range(26)]), end="")
+for i in range(90, 64, -1):
+    print("{}".format(chr((i + 1) % 2 * 32 + i)), end='')
